@@ -2,6 +2,7 @@
 #include <new>
 #include <type_traits>
 #include <atomic>
+#include <memory>
 
 namespace e2e
 {
@@ -34,13 +35,13 @@ namespace e2e
         using ElemStorage = char[sizeof(ElemT)];
 
         int len;
-        ElemStorage* storage;    
+        std::unique_ptr<ElemStorage[]> storage;
     public:
 
         dynamic_storage(int elem_count) : len(elem_count), storage(new ElemStorage[len]) {}
         using store_t = ElemStorage;
 
-        store_t* data() { return storage; }
+        store_t* data() { return storage.get(); }
 
         template <class... ArgT>
         ElemT* emplace(store_t* ptr, ArgT&&... args)
