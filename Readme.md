@@ -1,6 +1,6 @@
 # Lock-free Single Producer Single Consumer Queue
 
-This is a very bare bones lock free spsc queue implementation. As the name suggests, it is very useful for applications where you need to implement simplex communication between two threads.
+This is a very bare bones lock free spsc queue implementation in c++14 (easily portable to c++11). As the name suggests, it is very useful for applications where you need to implement simplex communication between two threads.
 
 Also, memory for elements is either automatic (capacity determined at compile time) or singly allocated (capacity determined at run time), therefore the container doesn't expand when more space is needed.
 
@@ -78,3 +78,7 @@ Returns the number of objects in the queue.
 + `capacity`
 
 Returns the total capacity of the queue.
+
++ `empty`
+
+Returns whether the queue is empty or not.
